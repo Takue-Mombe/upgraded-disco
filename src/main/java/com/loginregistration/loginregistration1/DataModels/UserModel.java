@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "usermodel")
+@Entity@Table(name = "usermodel")
 @Getter@Setter@AllArgsConstructor@NoArgsConstructor
 public class UserModel {
     @Id

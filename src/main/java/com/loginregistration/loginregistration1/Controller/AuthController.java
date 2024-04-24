@@ -25,7 +25,7 @@ public class AuthController {
     }
     @GetMapping("/index")
     public String home(){
-        return "index";
+        return "indec";
     }
 
     // handler method to handle user registration form request
@@ -62,4 +62,5 @@ public class AuthController {
         model.addAttribute("users", users);
         return "users";
     }
+
 }
