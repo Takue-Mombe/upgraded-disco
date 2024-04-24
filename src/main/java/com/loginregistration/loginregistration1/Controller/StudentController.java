@@ -28,7 +28,7 @@ public class StudentController {
 
         UserModel user = new UserModel();
         user.setName(name);
-        user.setEmail(name + "@hit.ac.zw");
+        user.setEmail(name);
 
         return user;
     }

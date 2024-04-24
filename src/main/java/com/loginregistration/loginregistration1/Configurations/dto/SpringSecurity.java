@@ -42,11 +42,12 @@ public class SpringSecurity {
                                 .requestMatchers("/users").hasRole("ADMIN")
                                 .requestMatchers("/student/**").hasRole("STUDENT")
                                 .requestMatchers("/lecturer/**").hasRole("LECTURER")
+                                .anyRequest().authenticated()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .successHandler(successHandler())
                                 .permitAll()
                 ).logout(
                         logout -> logout
@@ -68,7 +69,7 @@ public class SpringSecurity {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                 Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-                String targetUrl = "/"; // Default URL
+                String targetUrl = "/";
 
                 for (GrantedAuthority authority : authorities) {
                     if (authority.getAuthority().equals("ROLE_ADMIN")) {
